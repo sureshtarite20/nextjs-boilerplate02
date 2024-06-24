@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  Build-deploy:
+  web-deploy:
      uses: ./.github/workflows/reuseable-workflow.yml
      with:
       environment_name: "development"
