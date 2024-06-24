@@ -54,48 +54,48 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      - name: Cache modules
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml')}}
+      # - name: Cache modules
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ${{ env.STORE_PATH }}
+      #     key: pnpm-cache-${{ hashFiles('**/pnpm-lock.yaml')}}
 
       - name: Run pnpm install
         run: pnpm install
 
-      - name: Configure environment variables
-        run: |
-          if [ -d ./config/environments ];then
+      # - name: Configure environment variables
+      #   run: |
+      #     if [ -d ./config/environments ];then
 
-             env_file="./config/environments/.env.${{ inputs.environment_name }}"
+      #        env_file="./config/environments/.env.${{ inputs.environment_name }}"
 
-             if [ -f "$env_file" ];then
-               cp "./config/environments/.env.${{ inputs.environment_name }}" .env.production
-             else
-                if [ "${{ inputs.environment_name}}" == "preview" ];then
-                  echo "Preview environment detected, using beta configuration"
-                  cp -v ./config/environments/.env.beta .env.production
-                else
-                  echo "The configuration file .env.${{ inputs.environment_name }} doesn't exists"
-                  exit 1
-                fi
-             fi
-          else
-             echo "Configuration folder doesn't exist can't continue building the app"
-             exit 1
-          fi
+      #        if [ -f "$env_file" ];then
+      #          cp "./config/environments/.env.${{ inputs.environment_name }}" .env.production
+      #        else
+      #           if [ "${{ inputs.environment_name}}" == "preview" ];then
+      #             echo "Preview environment detected, using beta configuration"
+      #             cp -v ./config/environments/.env.beta .env.production
+      #           else
+      #             echo "The configuration file .env.${{ inputs.environment_name }} doesn't exists"
+      #             exit 1
+      #           fi
+      #        fi
+      #     else
+      #        echo "Configuration folder doesn't exist can't continue building the app"
+      #        exit 1
+      #     fi
 
-      - name: Confirm environment configuration file
-        run: |
-          if [ -f .env.production ];then
-             if [ -s .env.production ];then
-               echo "File is not empty"
-             else
-               exit 1
-             fi
-          else
-            echo "The configuration for production doesn't exist, can't proceed with build process"
-          fi
+      # - name: Confirm environment configuration file
+      #   run: |
+      #     if [ -f .env.production ];then
+      #        if [ -s .env.production ];then
+      #          echo "File is not empty"
+      #        else
+      #          exit 1
+      #        fi
+      #     else
+      #       echo "The configuration for production doesn't exist, can't proceed with build process"
+      #     fi
 
       - name: Build Project Artifacts
         run: vercel build --token="${{ secrets.VERCEL_TOKEN }}"
@@ -106,4 +106,4 @@ jobs:
         run: |
           url="$(vercel deploy --prebuilt --force --token=${{ secrets.VERCEL_TOKEN }})"
           echo "vercel_url=$url" >> $GITHUB_OUTPUT
-          vercel alias --token=${{ secrets.VERCEL_TOKEN }} set "$url" "${{ inputs.environment_name }}-commerce-web.vercel.app" --scope=${{ secrets.VERCEL_ORG_ID }}
+          vercel alias --token=${{ secrets.VERCEL_TOKEN }} set "$url" "${{ inputs.environment_name }}-nextjs-boilerplate02.vercel.app" --scope=${{ secrets.VERCEL_ORG_ID }}
