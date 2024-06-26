@@ -10,7 +10,7 @@ on:
       
       
 jobs:
-  web-deploy:
+  dev-deploy:
      uses: ./.github/workflows/reuseable-workflow.yml
      with:
       environment_name: "development"
