@@ -3,6 +3,10 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    # this will deploy data files only when no release is created
+    branches:
+      - main
       
 jobs:
   web-deploy:
