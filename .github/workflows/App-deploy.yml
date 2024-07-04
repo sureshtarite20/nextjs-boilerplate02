@@ -9,7 +9,7 @@ jobs:
   issuecomment-workflow:
     uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
-      issue_number: ${{ github.event.pull_request.number } }}
+      issue_number: ${{ github.event.pull_request.number }}
       owner: ${{ github.repository_owner }}
       repo: ${{ github.event.repository.name }}
       body: "The preview environment is being created for **cctweb**, please wait until the environment is created."
