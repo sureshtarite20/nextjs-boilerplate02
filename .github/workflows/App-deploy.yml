@@ -14,6 +14,7 @@ jobs:
       repo: ${{ github.event.repository.name }}
       body: "The preview environment is being created for **cctweb**, please wait until the environment is created."
   dev-deploy:
+     needs: issuecomment-workflow
      uses: ./.github/workflows/reuseable-workflow.yml
      with:
       environment_name: "development"
