@@ -19,8 +19,4 @@ jobs:
         id: vercel_url
         run: echo "::set-output name=url::https://example.com/storybook"
 
-      - name: Call Reusable Workflow
-        uses: ./.github/workflows/reusable-workflow.yml
-        with:
-          issue_number: ${{ github.event.issue.number }}
-          vercel_url: ${{ steps.vercel_url.outputs.url }}
+    
