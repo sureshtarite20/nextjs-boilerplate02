@@ -3,15 +3,11 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    # this will deploy data files only when no release is created
-    branches:
-      - main
       
       
 jobs:
   issuecomment-workflow:
-    uses: ./.github/workflows/create-comment.yml
+    uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
       issue_number: context.issue.number
       owner: context.repo.owner,
