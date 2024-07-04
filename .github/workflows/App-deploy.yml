@@ -9,9 +9,9 @@ jobs:
   issuecomment-workflow:
     uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
-      issue_number: context.issue.number,
-      owner: context.repo.owner,
-      repo: context.repo.repo,
+      issue_number: ${{ github.event.issue.number }}
+      owner: ${{ github.repository_owner }}
+      repo: ${{ github.event.repository.name }}
       body: "The preview environment is being created for **cctweb**, please wait until the environment is created."
   dev-deploy:
      uses: ./.github/workflows/reuseable-workflow.yml
