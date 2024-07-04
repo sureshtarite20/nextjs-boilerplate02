@@ -4,15 +4,15 @@ on:
     inputs:
       issue_number:
         description: "The number of the issue"
-        required: true
+        required: false
         type: number
       owner:
         description: "The owner of the repository"
-        required: true
+        required: false
         type: string
       repo:
         description: "The name of the repository"
-        required: true
+        required: false
         type: string
       body:
         description: "The body of the comment"
