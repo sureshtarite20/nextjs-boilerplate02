@@ -9,6 +9,6 @@ jobs:
   issuecomment-workflow:
     uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
-       echo "Issue Number: ${{ github.event.issue.number }}"
-       echo "Owner: ${{ github.repository_owner }}"
-       echo "Repo: ${{ github.event.repository.name }}"
+      Issue Number: ${{ github.event.issue.number }}
+      Owner: ${{ github.repository_owner }}
+      Repo: ${{ github.event.repository.name }}
