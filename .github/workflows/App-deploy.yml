@@ -8,9 +8,9 @@ on:
 jobs:
   issue_comment:
    runs-on: ubuntu-latest
-    steps:
-      - name: Debug inputs
-        run: |
+   steps:
+   - name: Debug inputs
+     run: |
           echo "Issue Number: ${{ github.event.issue.number }}"
           echo "Owner: ${{ github.repository_owner }}"
           echo "Repo: ${{ github.event.repository.name }}"
