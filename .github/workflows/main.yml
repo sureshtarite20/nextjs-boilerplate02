@@ -1,0 +1,22 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Add any steps you need before calling the reusable workflow
+      # For example, a step to set the vercel_url output
+      - name: Get Vercel URL
+        id: vercel_url
+        run: echo "::set-output name=url::https://example.com/storybook"
+
+     
