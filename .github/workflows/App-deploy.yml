@@ -9,7 +9,7 @@ jobs:
   issuecomment-workflow:
     uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
-      issue_number: context.issue.number
+      issue_number: context.issue.number,
       owner: context.repo.owner,
       repo: context.repo.repo,
       body: "The preview environment is being created for **cctweb**, please wait until the environment is created."
