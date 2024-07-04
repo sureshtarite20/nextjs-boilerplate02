@@ -6,12 +6,9 @@ on:
       
       
 jobs:
-  issue_comment:
-   runs-on: ubuntu-latest
-   steps:
-   - name: Debug inputs
-     run: |
-          echo "Issue Number: ${{ github.event.issue.number }}"
-          echo "Owner: ${{ github.repository_owner }}"
-          echo "Repo: ${{ github.event.repository.name }}"
-
+  issuecomment-workflow:
+    uses: ./.github/workflows/cctweb-issuecomment.yml
+    with:
+      issue_number: context.issue.number
+      owner: context.repo.owner,
+      repo: context.repo.repo
