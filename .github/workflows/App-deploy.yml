@@ -7,6 +7,9 @@ on:
       
 jobs:
   issuecomment-workflow:
+    permissions:
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/cctweb-issuecomment.yml
     with:
       issue_number: ${{ github.event.issue.number }}
